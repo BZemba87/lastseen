@@ -8,7 +8,7 @@ const NavBar = () => {
         <Navbar.Brand>LastSeen</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto text-left">
             <Nav.Link>
               <i className="fas fa-home"></i> Home
             </Nav.Link>
