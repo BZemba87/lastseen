@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Last Seen 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a social media image sharing site that unfortunately is unfinished.
 
-## Available Scripts
+It will have the ability to perform CRUD operations.
 
-In the project directory, you can run:
+Please click link to live site [here](https://last-seen.herokuapp.com/).
 
-### `npm start`
+## User Stories 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I used the Agile Methodology Tool on Github to plan my project and use as a to do list. I would label the Must Have and Should Have tasks and move the issues I was working on across the board from the To Do column to the In Progress column. Completed issues would then be dragged across to the Done column.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h2 align ="center"><img src = "public/user-stories.png"></h2>
 
-### `npm test`
+# Wireframes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Home Page
 
-### `npm run build`
+<h2 align ="center"><img src = "public/homepage.png"></h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Home Page Logged In
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 align ="center"><img src = "public/homepage-loggedin.png"></h2>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Create a Post
 
-### `npm run eject`
+<h2 align ="center"><img src = "public/createpost.png"></h2>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Login
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h2 align ="center"><img src = "public/login.png"></h2>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Sign Up
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<h2 align ="center"><img src = "public/signup.png"></h2>
 
-## Learn More
+## Forgot Password
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h2 align ="center"><img src = "public/forgotpassword.png"></h2>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+# Deployment
+- This React application is deployed to Heroku. Please follow the steps below:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Fork or clone this repository in GitHub
 
-### Making a Progressive Web App
+- Log in to Heroku
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Click on 'New' and select 'Create new app' from the dropdown
 
-### Advanced Configuration
+- Enter a name for the app and select the appropriate region
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Select 'Create app'
 
-### Deployment
+- Click on 'Settings'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Select 'GitHub' and confirm you wish to deploy using GitHub
 
-### `npm run build` fails to minify
+- Find the 'Connect to GitHub' section and use the search box to locate relevant repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Select 'Connect'
+
+- If you would like your site to be automatically deployed with each change that is pushed to Github, choose the 'main' branch under 'Automatic Deploys' and select 'Enable Automatic Deploys'
+
+- Alternatively, you can select 'Manual Deploy' below and choose 'main' as the branch to deploy and select 'Deploy Branch'. Your site will only be manually deployed when you choose
+
+- Once the deployment process is complete, you will be able to click on a link to your deployed site
+
+# To connect the front end site to the back end on Heroku and Gitpod:
+- Add new config var to API on Heroku called CLIENT_ORIGIN with a value of the url for the deployed React project
+
+- Add a CLIENT_ORIGIN_DEV key with the value of your Gitpod preview link
+
+- Now we need to tell our React project to send requests to the API
+
+- To do this, install the Axios Library in your Gitpod workspace 
+
+- Create an api folder with an axiosDefaults file inside it and import axios
+
+- Now add base_URL of your deployed API project
+
+- Set the content-type header to multipart/form-data
+
+- Set withCredentials to true
+
+- Import them into App.js
+
+# Credit
+- Code Institute Moments Walkthrough
+- Mentor
+
