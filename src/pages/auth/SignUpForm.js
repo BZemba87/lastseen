@@ -33,7 +33,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/signin");
+      history.push("/login");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -101,6 +101,11 @@ const SignUpForm = () => {
             type="submit">
                 Sign up
             </Button>
+            {errors.non_field_errors?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
         </Form>;
 
       
@@ -108,8 +113,8 @@ const SignUpForm = () => {
 
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signin">
-            Already have an account? <span>Sign in</span>
+          <Link className={styles.Link} to="/login">
+            Already have an account? <span>Log in</span>
           </Link>
         </Container>
       </Col>
