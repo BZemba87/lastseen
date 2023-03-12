@@ -7,7 +7,49 @@ import { useCurrentUser } from "../contexts/CurrentUserContexts";
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const addPostIcon = (
+    <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/posts/create"
+  >
+    <i className="far fa-plus-square"></i>Add Post
+  </NavLink>
+
+  )
+  const loggedInIcons = <>
+    <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/feed"
+  >
+    <i className="fas fa-stream"></i>feed
+    </NavLink>
+   <NavLink
+    className={styles.NavLink}
+    activeClassName={styles.Active}
+    to="/liked"
+  >
+    <i className="fas fa-heart"></i>Liked
+  </NavLink>
+  <NavLink
+    className={styles.NavLink}
+    to="/"
+    onClick={() => {}}
+  >
+    <i className="fas fa-signout-alt"></i>Log Out
+  </NavLink>
+  <NavLink
+    className={styles.NavLink}
+    to={`/profiles/${currentUser?.profile_id}`}
+  >
+    <img src={currentUser?.profile_image}/>
+  </NavLink>
+  </>;
+
+  
+
+
   const loggedOutIcons = (
   <>
   <NavLink
@@ -35,6 +77,7 @@ const NavBar = () => {
             LastSeen
           </Navbar.Brand>
         </NavLink>
+        {currentUser && addPostIcon}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
