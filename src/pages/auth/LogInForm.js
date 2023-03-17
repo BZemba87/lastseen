@@ -19,12 +19,11 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContexts";
 function LogInForm() {
   const setCurrentUser = useSetCurrentUser();
 
-
-  const [signInData, setSignInData] = useState({
+  const [logInData, setLogInData] = useState({
   username: "",
   password: "",
 });
-const { username, password } = signInData;
+const { username, password } = logInData;
 
 const [errors, setErrors] = useState({});
 
@@ -32,7 +31,7 @@ const history = useHistory();
 const handleSubmit = async (event) => {
   event.preventDefault();
   try {
-    const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+    const {data} = await axios.post("/dj-rest-auth/login/", logInData);
     setCurrentUser(data.user);
     history.push("/");
   } catch (err) {
@@ -40,8 +39,8 @@ const handleSubmit = async (event) => {
   }
 };
 const handleChange = (event) => {
-  setSignInData({
-    ...signInData,
+  setLogInData({
+    ...logInData,
     [event.target.name]: event.target.value,
   });
 };
@@ -85,7 +84,6 @@ const handleChange = (event) => {
                 {message}
               </Alert>
             ))}
-
 
                 <Button 
                     className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
