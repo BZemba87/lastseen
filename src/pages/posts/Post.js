@@ -16,7 +16,7 @@ const Post = (props) => {
     title,
     content,
     image,
-    updated_at,
+    created_at,
     postPage,
     setPosts,
   } = props;
@@ -65,7 +65,7 @@ const Post = (props) => {
           {owner}
         </Link>
         <div className='d-flex align-items-center'>
-          <span>{updated_at}</span>
+          <span>{created_at}</span>
           {is_owner && postPage && "..."} 
         </div>
       </Media>
