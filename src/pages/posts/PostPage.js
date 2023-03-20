@@ -8,6 +8,7 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefault";
 import Post from "./Post";
+import Comment from "../comments/Comment";
 
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContexts";
@@ -56,9 +57,7 @@ return (
         ) : null}
         {comments.results.length ? (
           comments.results.map(comment => (
-            <p key={comment}>
-              {comment.owner}: {comment.content}
-            </p>
+            <Comment key={comment.id} {...comment}/>
           ))
         ) : currentUser ? (
           <span>Got something to say?  Add a comment!</span>
