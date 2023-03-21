@@ -4,9 +4,31 @@ This is a social media image sharing site that allows users to create, read, upd
 
 Please click link to live site [here](https://last-seen.herokuapp.com/).
 
+<h2 align ="center"><img src = "public/amiresponsive.jpg"></h2>
+
 ## User Stories 
 
 I used the Agile Methodology Tool on Github to plan my project and use as a to do list. I labelled tasks with Must Have and Should Have and moved the issues I was working on across the board from the To Do column to the In Progress column. Completed issues would then be dragged across to the Done column.  
+
+- As a user, I want to be able to view a NavBar on all pages of the site to allow easy navigation across it.  
+
+- As a user, I want to be able to see my logged in/out status by looking at the links on the NavBar.
+
+- As a user, I want the option to create an account or log in to an existing account so that I can interact with posts I can see.
+
+- As a user, I want to be able to create a post for other users to see.
+
+- As a user, I want to be able to see when posts were created so I can keep up to date with the content.
+
+- As a user, I want to be able to like and comment on posts by other users to interact.
+
+- As a user with an account, I want to be able to delete, edit or unlike a post.
+
+- As a user, I want to be able to visit another user's profile so I can see all of their posts.
+
+- As a user, I want to be able to search posts so I can find specific posts.
+
+- As a user, I want the posts and comments to keep loading as I scroll through for a better user experience.
 
 <h2 align ="center"><img src = "public/user-stories.png"></h2>
 
@@ -36,8 +58,44 @@ I used the Agile Methodology Tool on Github to plan my project and use as a to d
 
 <h2 align ="center"><img src = "public/forgotpassword.png"></h2>
 
+# Testing
+
+### As a user, I want to be able to view a NavBar on all pages of the site to allow easy navigation across it. 
+- The NavBar is visible on all pages for logged in and logged out users
 
 
+### As a user, I want to be able to see my logged in/out status by looking at the links on the NavBar.
+- Log In/Sign Up appears on NavBar for logged out users and Log Out appears for logged in users.
+
+### As a user, I want the option to create an account or log in to an existing account so that I can interact with posts I can see.
+- The NavBar has the option to log in or sign up to create an account.
+
+### As a user, I want to be able to create a post for other users to see.
+- Posts can be created and displayed for users to view
+
+### As a user, I want to be able to see when posts were created so I can keep up to date with the content.
+- Posts have a created on date
+
+### As a user, I want to be able to like and comment on posts by other users to interact.
+- Logged in users are able to comment and like posts, logged out users are prompted to log in to like or comment.
+
+### As a user with an account, I want to be able to delete, edit or unlike a post.
+- The site has the functionality for logged in users to delete or edit their own posts and unlike other users posts that they had previously liked.
+
+### As a user, I want to be able to search posts so I can find specific posts.
+- The search function is working and there is a no results message if no posts match the search.
+
+### As a user, I want the posts and comments to keep loading as I scroll through for a better user experience.
+- Infinite scroll exists on posts and comments.
+
+# Known Issues
+- The same comments are displaying under all posts
+- The same posts are displaying on all profile pages
+
+# ESLint
+- Installed Eslint in Gitpod and had a number of errors re prop-types so added a react/prop-types rule that I found on Slack for the same issue and now these are the only errors I can see:
+
+<h2 align ="center"><img src = "public/ESLint.jpg"></h2>
 
 # Deployment
 - This React application is deployed to Heroku. Please follow the steps below:
@@ -66,6 +124,15 @@ I used the Agile Methodology Tool on Github to plan my project and use as a to d
 
 - Once the deployment process is complete, you will be able to click on a link to your deployed site
 
+# Technologies Used:
+- Pexels
+- FontAwesome
+- HTML
+- CSS
+- Javascript
+- Bootstrap
+- React 
+
 # To connect the front end site to the back end on Heroku and Gitpod:
 - Add new config var to API on Heroku called CLIENT_ORIGIN with a value of the url for the deployed React project
 
@@ -88,4 +155,6 @@ I used the Agile Methodology Tool on Github to plan my project and use as a to d
 # Credit
 - Code Institute Moments Walkthrough
 - Mentor
+- Tutoring
+- Slack 
 
