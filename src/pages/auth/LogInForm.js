@@ -111,7 +111,7 @@ const handleChange = (event) => {
         <Image
           className={`${appStyles.FillerImage}`}
           src={
-            "/welcomeback.jpg"
+            "/hello.jpg"
           }
         />
       </Col>

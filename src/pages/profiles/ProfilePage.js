@@ -106,7 +106,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
+      <p className="text-center">{profile?.owner}'s Posts</p>
       <hr />
       
       {profilePosts.results.length ? (
