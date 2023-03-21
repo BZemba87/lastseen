@@ -124,6 +124,11 @@ I used the Agile Methodology Tool on Github to plan my project and use as a to d
 
 - Once the deployment process is complete, you will be able to click on a link to your deployed site
 
+## Future Features 
+- Users will be able to follow each other
+- Users will be able to update their profiles
+- Users will be able to view most popular profiles 
+
 # Technologies Used:
 - Pexels
 - FontAwesome
