@@ -1,6 +1,6 @@
 # Last Seen 
 
-This is a social media image sharing site that unfortunately is unfinished.
+This is a social media image sharing site that allows users to create, read, update and delete posts, comments, likes and profiles.
 
 It will have the ability to perform CRUD operations.
 
