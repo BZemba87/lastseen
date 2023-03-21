@@ -2,13 +2,11 @@
 
 This is a social media image sharing site that allows users to create, read, update and delete posts, comments, likes and profiles.
 
-It will have the ability to perform CRUD operations.
-
 Please click link to live site [here](https://last-seen.herokuapp.com/).
 
 ## User Stories 
 
-I used the Agile Methodology Tool on Github to plan my project and use as a to do list. I would label the Must Have and Should Have tasks and move the issues I was working on across the board from the To Do column to the In Progress column. Completed issues would then be dragged across to the Done column.
+I used the Agile Methodology Tool on Github to plan my project and use as a to do list. I labelled tasks with Must Have and Should Have and moved the issues I was working on across the board from the To Do column to the In Progress column. Completed issues would then be dragged across to the Done column.  
 
 <h2 align ="center"><img src = "public/user-stories.png"></h2>
 
