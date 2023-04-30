@@ -19,22 +19,22 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
 
-function PostCreateForm() {
+function CaptionCreateForm() {
   const [errors, setErrors] = useState({});
 
-  const [postData, setPostData] = useState({
+  const [captionData, setCaptionData] = useState({
     title: "",
     content: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, content, image } = captionData;
 
   const imageInput = useRef(null);
   const history = useHistory();
 
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
+    setCaptionData({
+      ...captionData,
       [event.target.name]: event.target.value,
     });
   };
@@ -42,8 +42,8 @@ function PostCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
+      setCaptionData({
+        ...captionData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -58,8 +58,8 @@ function PostCreateForm() {
     formData.append("image", imageInput.current.files[0]);
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
+      const { data } = await axiosReq.post("/captions/", formData);
+      history.push(`/captions/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -171,4 +171,4 @@ function PostCreateForm() {
   );
 }
 
-export default PostCreateForm;
+export default CaptionCreateForm;
