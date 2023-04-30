@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefault";
-import Post from "./Post";
+import Caption from "./Caption";
 import Comment from "../comments/Comment";
 
 import CommentCreateForm from "../comments/CommentCreateForm";
@@ -17,9 +17,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
-function PostPage() {
+function CaptionPage() {
   const { id } = useParams();
-  const [post, setPost] = useState({ results: []});
+  const [caption, setCaption] = useState({ results: []});
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -28,11 +28,11 @@ function PostPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }, { data: comments }] = await Promise.all([
-          axiosReq.get(`/posts/${id}`),
-          axiosReq.get(`/comments/?post=${id}`),
+        const [{ data: caption }, { data: comments }] = await Promise.all([
+          axiosReq.get(`/captions/${id}`),
+          axiosReq.get(`/comments/?caption=${id}`),
         ]);
-        setPost({ results: [post] });
+        setCaption({ results: [caption] });
         setComments(comments);
       } catch (err) {
         console.log(err);
@@ -45,14 +45,14 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <Post {...post.results[0]} setPosts={setPost} postPage />
+        <Caption {...caption.results[0]} setCaptions={setCaption} captionPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
-              post={id}
-              setPost={setPost}
+              caption={id}
+              setCaption={setCaption}
               setComments={setComments}
             />
           ) : comments.results.length ? (
@@ -64,7 +64,7 @@ function PostPage() {
                <Comment
                  key={comment.id}
                  {...comment}
-                 setPost={setPost}
+                 setCaption={setCaption}
                  setComments={setComments}
                />
              ))}
@@ -87,4 +87,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default CaptionPage;

@@ -8,22 +8,22 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import styles from "../../styles/PostCreateEditForm.module.css";
+import styles from "../../styles/CaptionCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams} from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
 
-function PostEditForm() {
+function CaptionEditForm() {
   const [errors, setErrors] = useState({});
 
-  const [postData, setPostData] = useState({
+  const [CaptionData, setCaptionData] = useState({
     title: "",
     content: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, content, image } = captionData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -32,10 +32,10 @@ function PostEditForm() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/${id}/`);
+        const { data } = await axiosReq.get(`/captions/${id}/`);
         const { title, content, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, content, image }) : history.push("/");
+        is_owner ? setCaptionData({ title, content, image }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -45,8 +45,8 @@ function PostEditForm() {
   }, [history, id]);
 
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
+    setCaptionData({
+      ...captionData,
       [event.target.name]: event.target.value,
     });
   };
@@ -54,8 +54,8 @@ function PostEditForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
+      setCaptionData({
+        ...captionData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -73,8 +73,8 @@ function PostEditForm() {
     }
 
     try {
-        await axiosReq.put(`/posts/${id}/`, formData);
-        history.push(`/posts/${id}`);
+        await axiosReq.put(`/captions/${id}/`, formData);
+        history.push(`/captions/${id}`);
       } catch (err) {
         console.log(err);
         if (err.response?.status !== 401) {
@@ -120,10 +120,10 @@ function PostEditForm() {
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
       >
-        cancel
+        Cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save changes
+        Save Changes
       </Button>
     </div>
   );
@@ -144,7 +144,7 @@ function PostEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="image-upload"
                     >
-                      Change the image
+                      Change the Pic
                     </Form.Label>
                   </div>
 
@@ -172,4 +172,4 @@ function PostEditForm() {
   );
 }
 
-export default PostEditForm;
+export default CaptionEditForm;
