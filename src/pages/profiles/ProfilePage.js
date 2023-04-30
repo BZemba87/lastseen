@@ -19,33 +19,34 @@ import {
   } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Post from "../posts/Post";
+import Caption from "../captions/Caption";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profileCaptions, setProfileCaptions] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const setProfileData = useSetProfileData();
   const {pageProfile} = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
-  const [profilePosts, setProfilePosts] = useState({ results: [] });
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile}, { data: profilePosts }] = await Promise.all([
+        const [{ data: pageProfile}, { data: profileCaptions }] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
-          axiosReq.get(`/posts/?owner__profile=${id}`),
+          axiosReq.get(`/captions/?owner__profile=${id}`),
         ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
-        setProfilePosts(profilePosts);
+        setProfileCaptions(profileCaptions);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -103,26 +104,26 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileCaptions = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s Posts</p>
+      <p className="text-center">{profile?.owner}'s Captions</p>
       <hr />
       
-      {profilePosts.results.length ? (
+      {profileCaptions.results.length ? (
         <InfiniteScroll
-          children={profilePosts.results.map((post) => (
-            <Post key={post.id} {...post} setPosts={setProfilePosts} />
+          children={profileCaptions.results.map((caption) => (
+            <Caption key={caption.id} {...caption} setCaptions={setProfileCaptions} />
           ))}
-          dataLength={profilePosts.results.length}
+          dataLength={profileCaptions.results.length}
           loader={<Asset spinner />}
-          hasMore={!!profilePosts.next}
-          next={() => fetchMoreData(profilePosts, setProfilePosts)}
+          hasMore={!!profileCaptions.next}
+          next={() => fetchMoreData(profileCaptions, setProfileCaptions)}
         />
       ) : (
         <Asset
           src={NoResults}
-          message={`Nothing to see here, ${profile?.owner} hasn't posted yet.`}
+          message={`Nothing to see here, ${profile?.owner} has no captions!`}
         />
       )}
     </>
@@ -135,7 +136,7 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
+              {mainProfileCaptions}
             </>
           ) : (
             <Asset spinner />

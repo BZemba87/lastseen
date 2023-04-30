@@ -5,11 +5,11 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import Post from "./Post";
+import Caption from "./Caption";
 import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/PostsPage.module.css";
+import styles from "../../styles/CaptionsPage.module.css";
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
 
@@ -17,18 +17,18 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
-function PostsPage({ message, filter = "" }) {
-  const [posts, setPosts] = useState({ results: [] });
+function CaptionsPage({ message, filter = "" }) {
+  const [captions, setCaptions] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchCaptions = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-        setPosts(data);
+        const { data } = await axiosReq.get(`/captions/?${filter}search=${query}`);
+        setCaptions(data);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ function PostsPage({ message, filter = "" }) {
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchPosts();
+      fetchCaptions();
     }, 1000)
     return () => {
       clearTimeout(timer);
@@ -56,22 +56,22 @@ function PostsPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text" 
             className="mr-sm-2"
-            placeholder="Find posts" />
+            placeholder="Find Captions" />
         </Form>
         {hasLoaded ? (
           <>
             {posts.results.length ? (
               <InfiniteScroll
                 children={
-                  posts.results.map((post) => (
-                    <Post key={post.id} {...post} setPosts={setPosts} />
+                  captions.results.map((post) => (
+                    <Caption key={caption.id} {...caption} setCaptions={setCaptions} />
                   ))
 
                 }
-                dataLength={posts.results.length}
+                dataLength={captions.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!posts.next}
-                next={() => fetchMoreData(posts, setPosts)}
+                hasMore={!!captions.next}
+                next={() => fetchMoreData(captions, setCaptions)}
               
               />
             ) : (
@@ -92,4 +92,4 @@ function PostsPage({ message, filter = "" }) {
   );
 }
 
-export default PostsPage;
+export default CaptionsPage;

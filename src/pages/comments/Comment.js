@@ -17,7 +17,7 @@ const Comment = (props) => {
     updated_at,
     content,
     id,
-    setPost,
+    setCaption,
     setComments,
   } = props;
 
@@ -28,11 +28,11 @@ const Comment = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
-      setPost((prevPost) => ({
+      setCaption((prevCaption) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count - 1,
+            ...prevCaption.results[0],
+            comments_count: prevCaption.results[0].comments_count - 1,
           },
         ],
       }));

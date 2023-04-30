@@ -9,7 +9,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefault";
 
 function CommentCreateForm(props) {
-  const { post, setPost, setComments, profileImage, profile_id } = props;
+  const { caption, setCaption, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -19,19 +19,19 @@ function CommentCreateForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axiosRes.post("/comments/", {
+      const { data } = await axiosRes.caption("/comments/", {
         content,
-        post,
+        caption,
       });
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
       }));
-      setPost((prevPost) => ({
+      setCaption((prevCaption) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
+            ...prevCaption.results[0],
+            comments_count: prevCaption.results[0].comments_count + 1,
           },
         ],
       }));
@@ -63,7 +63,7 @@ function CommentCreateForm(props) {
         disabled={!content.trim()}
         type="submit"
       >
-        post
+        Add
       </button>
     </Form>
   );
