@@ -25,13 +25,13 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+  const addCaptionIcon = (
     <NavLink
     className={styles.NavLink}
     activeClassName={styles.Active}
-    to="/posts/create"
+    to="/captions/create"
   >
-    <i className="far fa-plus-square"></i>Add Post
+    <i className="far fa-plus-square"></i>Add Caption
     </NavLink>
 
   );
@@ -75,7 +75,7 @@ const NavBar = () => {
             LastSeen
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addPostIcon}
+        {currentUser && addCaptionIcon}
         <Navbar.Toggle 
            ref={ref}
            onClick={() => setExpanded(!expanded)}

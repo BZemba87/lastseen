@@ -60,10 +60,10 @@ function CaptionsPage({ message, filter = "" }) {
         </Form>
         {hasLoaded ? (
           <>
-            {posts.results.length ? (
+            {captions.results.length ? (
               <InfiniteScroll
                 children={
-                  captions.results.map((post) => (
+                  captions.results.map((caption) => (
                     <Caption key={caption.id} {...caption} setCaptions={setCaptions} />
                   ))
 

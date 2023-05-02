@@ -5,11 +5,11 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefault";
 import SignUpForm from './pages/auth/SignUpForm';
 import LogInForm from './pages/auth/LogInForm';
-import PostCreateForm from './pages/posts/PostCreateForm';
-import PostPage from './pages/posts/PostPage';
-import PostsPage from './pages/posts/PostsPage';
+import CaptionCreateForm from './pages/captions/CaptionCreateForm';
+import CaptionPage from './pages/captions/CaptionPage';
+import CaptionsPage from './pages/captions/CaptionsPage';
 import { useCurrentUser } from './contexts/CurrentUserContexts';
-import PostEditForm from './pages/posts/PostEditForm';
+import CaptionEditForm from './pages/captions/CaptionEditForm';
 import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
@@ -26,32 +26,32 @@ function App() {
                 exact 
                 path="/" 
                 render={() => (
-                 <PostsPage message="Nothing to see here!  Search again." />
+                 <CaptionsPage message="Nothing to see here!  Search again." />
                 )}
               />
               <Route 
                 exact 
                 path="/feed" 
                 render={() => (
-                 <PostsPage message="Nothing to see here!  Search again or follow a friend." 
+                 <CaptionsPage message="Nothing to see here!  Search again or follow a friend." 
                  filter={`owner__followed__owner__profile=${profile_id}&`}
                  />
                 )}
                 />
               <Route 
                 exact 
-                path="/liked" 
+                path="/love" 
                 render={() => (
-                 <PostsPage message="Nothing to see here!  Search again or like a post." 
-                 filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                 <CaptionsPage message="Nothing to see here!  Search again or love a caption." 
+                 filter={`love__owner__profile=${profile_id}&ordering=-love__created_at&`}
                  />
                 )}
               />
               <Route exact path="/login" render={() => <LogInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route exact path="/posts/create" render={() => <PostCreateForm />} />
-              <Route exact path="/posts/:id" render={() => <PostPage />} />
-              <Route exact path="/posts/:id/edit" render={() => <PostEditForm/>} />
+              <Route exact path="/captions/create" render={() => <CaptionCreateForm />} />
+              <Route exact path="/captions/:id" render={() => <CaptionPage />} />
+              <Route exact path="/captions/:id/edit" render={() => <CaptionEditForm/>} />
               <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>

@@ -1,4 +1,4 @@
-.Post {
+.Caption {
     background-color: #EFDAC4;
     border: 1px solid #EFDAC4;
     border-radius: 2px;
@@ -6,19 +6,23 @@
     text-align: center;
   }
   
-  .Post figure,
+  .Caption figure,
   h5 {
     margin: 0 0;
   }
   
   .Heart {
-    color: #f85032;
+    color: #465C78;
   }
   
   .Heart:hover {
-    color: #2142b2;
+    color: #E8A87C;
   }
   
   .HeartOutline:hover {
-    color: #f85032;
+    color: #E8A87C;
+  }
+
+  .Fave {
+    color: #465C78
   }

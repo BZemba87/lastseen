@@ -14,7 +14,8 @@ const Caption = (props) => {
     owner,
     profile_id,
     profile_image,
-    like_id,
+    fave_id,
+    love_id,
     title,
     content,
     image,
@@ -40,14 +41,14 @@ const Caption = (props) => {
     }
   };
 
-  const handleLike = async () => {
+  const handleLove = async () => {
     try {
-      const { data } = await axiosRes.caption("/likes/", { caption: id });
+      const { data } = await axiosRes.post("/love/", { post: id });
       setCaptions((prevCaptions) => ({
         ...prevCaptions,
         results: prevCaptions.results.map((caption) => {
           return caption.id === id
-            ? { ...caption, like_id: data.id }
+            ? { ...caption, love_id: data.id }
             : caption;
         }),
       }));
@@ -56,14 +57,14 @@ const Caption = (props) => {
     }
   };
 
-  const handleUnlike = async () => {
+  const handleUnlove = async () => {
     try {
-      await axiosRes.delete(`/likes/${like_id}/`);
+      await axiosRes.delete(`/love/${love_id}/`);
       setCaptions((prevCaptions) => ({
         ...prevCaptions,
         results: prevCaptions.results.map((caption) => {
           return caption.id === id
-            ? { ...caption, likes_count: caption.likes_count - 1, like_id: null }
+            ? { ...caption, love_count: caption.love_count - 1, love_id: null }
             : caption;
         }),
       }));
@@ -71,6 +72,46 @@ const Caption = (props) => {
       console.log(err);
     }
   };
+
+  const handleFaveCaptions = async () => {
+    try {
+      const { data } = await axiosRes.post("/fave/", { post: id });
+      setCaptions((prevCaptions) => ({
+        ...prevCaptions,
+        results: prevCaptions.results.map((caption) => {
+          return caption.id === id
+            ? {
+                ...caption, fave_count: caption.fave_count + 1,
+                fave_id: data.id,
+              } 
+            : caption;
+        }),
+      }));
+    } catch (error) {
+      console.log(err);
+    }
+  };
+
+  const handleUnfaveCaptions = async () => {
+    try {
+      await axiosRes.delete(`/fave/${fave_id}/`);
+      setCaptions((prevCaptions) => ({
+        ...prevCaptions,
+        results: prevCaptions.results.map((caption) => {
+          return caption.id === id
+            ? {
+                ...caption,
+                fave_count: caption.fave_count - 1,
+                fave_id: null,
+              }
+            : caption;
+        }),
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
   <Card className={styles.Caption}>
@@ -97,22 +138,24 @@ const Caption = (props) => {
       {title && <Card.Title className='text-center'>{title}</Card.Title>}
       {content && <Card.Text>{content}</Card.Text>}
       <div className={styles.CaptionBar}>
+
+        {/* Love captions */}
         {is_owner ? (
-          <OverlayTrigger placement='top' overlay={<Tooltip>You can't like your own caption!</Tooltip>}>
+          <OverlayTrigger placement='top' overlay={<Tooltip>You can't love your own caption!</Tooltip>}>
             <i className="far fa-heart"/>
           </OverlayTrigger>
-        ) : like_id ? (
-        <span onClick={handleUnlike}>
+        ) : love_id ? (
+        <span onClick={handleUnlove}>
           <i className={`fas fa-heart ${styles.Heart}`}/>
         </span>
         ) : currentUser ? (
-          <span onClick={handleLike}>
+          <span onClick={handleLove}>
             <i className={`far fa-heart ${styles.HeartOutline}`}/>
           </span>
         ) : (
           <OverlayTrigger 
           placement='top' 
-          overlay={<Tooltip>Log in to like captions</Tooltip>}
+          overlay={<Tooltip>Log in to love captions!</Tooltip>}
           >
             <i className='far fa-heart'/>
           </OverlayTrigger>
@@ -120,6 +163,31 @@ const Caption = (props) => {
         <Link to={`/captions/${id}`}>
           <i className='far fa-comments'/>
         </Link>
+
+         {/* Fave captions*/}
+         {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't fave your own caption!</Tooltip>}
+            >
+              <i className="fa-regular fa-bookmark" />
+            </OverlayTrigger>
+          ) : fave_id ? (
+            <span onClick={handleUnfaveCaptions}>
+              <i className={`fa-regular fa-bookmark ${styles.Fave}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handleFaveCaptions}>
+              <i className={`fa-regular fa-bookmark ${styles.Fave}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to fave captions!</Tooltip>}
+            >
+              <i className="fa-regular fa-bookmark" />
+            </OverlayTrigger>
+          )}
       </div>
     </Card.Body>
   </Card>
