@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { 
@@ -46,6 +46,14 @@ const NavBar = () => {
   >
     <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
   </NavLink>
+  <NavLink
+        to="/fave"
+        className={`${styles.NavLink} d-none d-lg-block`}
+      >
+          <span>
+            <i className="fa-solid fa-bookmark"></i> Fave Captions
+          </span>
+      </NavLink>
   </>
   );
   const loggedOutIcons = (

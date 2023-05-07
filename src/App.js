@@ -29,15 +29,17 @@ function App() {
                  <CaptionsPage message="Nothing to see here!  Search again." />
                 )}
               />
-              <Route 
-                exact 
-                path="/feed" 
-                render={() => (
-                 <CaptionsPage message="Nothing to see here!  Search again or follow a friend." 
-                 filter={`owner__followed__owner__profile=${profile_id}&`}
-                 />
-                )}
+                 <Route
+                  exact
+                  path={"/fave"}
+                  render={() => (
+                    <CaptionsPage
+                      message="Nothing to see here! Fave a caption you want to see again!"
+                      filter={`fave_captions__owner__profile=${profile_id}&ordering=-fave_captions__created_on&`}
+                    />
+                  )}
                 />
+                
               <Route 
                 exact 
                 path="/love" 
