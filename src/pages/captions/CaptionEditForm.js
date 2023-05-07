@@ -23,7 +23,7 @@ function CaptionEditForm() {
     content: "",
     image: "",
   });
-  const { title, content, image } = captionData;
+  const { title, content, image } = CaptionData;
 
   const imageInput = useRef(null);
   const history = useHistory();

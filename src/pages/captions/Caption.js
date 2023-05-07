@@ -24,6 +24,7 @@ const Caption = (props) => {
     setCaptions,
   } = props;
 
+
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
@@ -76,6 +77,8 @@ const Caption = (props) => {
   const handleFaveCaptions = async () => {
     try {
       const { data } = await axiosRes.post("/fave/", { caption: id });
+      console.log(data)
+
       setCaptions((prevCaptions) => ({
         ...prevCaptions,
         results: prevCaptions.results.map((caption) => {
@@ -178,7 +181,7 @@ const Caption = (props) => {
             </span>
           ) : currentUser ? (
             <span onClick={handleFaveCaptions}>
-              <i className={`fa-regular fa-bookmark ${styles.FaveOutline}`} />
+              <i className={`fa-solid fa-bookmark ${styles.FaveOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
