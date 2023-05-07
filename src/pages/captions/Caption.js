@@ -43,12 +43,12 @@ const Caption = (props) => {
 
   const handleLove = async () => {
     try {
-      const { data } = await axiosRes.post("/love/", { post: id });
+      const { data } = await axiosRes.post("/love/", { caption: id });
       setCaptions((prevCaptions) => ({
         ...prevCaptions,
         results: prevCaptions.results.map((caption) => {
           return caption.id === id
-            ? { ...caption, love_id: data.id }
+            ? { ...caption, love_id: data.id }                                                                                    
             : caption;
         }),
       }));
@@ -75,7 +75,7 @@ const Caption = (props) => {
 
   const handleFaveCaptions = async () => {
     try {
-      const { data } = await axiosRes.post("/fave/", { post: id });
+      const { data } = await axiosRes.post("/fave/", { caption: id });
       setCaptions((prevCaptions) => ({
         ...prevCaptions,
         results: prevCaptions.results.map((caption) => {
@@ -178,7 +178,7 @@ const Caption = (props) => {
             </span>
           ) : currentUser ? (
             <span onClick={handleFaveCaptions}>
-              <i className={`fa-regular fa-bookmark ${styles.Fave}`} />
+              <i className={`fa-regular fa-bookmark ${styles.FaveOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
