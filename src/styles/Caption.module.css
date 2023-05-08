@@ -15,30 +15,8 @@
     color: #465C78;
   }
   
-  .Heart:hover {
-    color: #E8A87C;
-  }
-  
-  .HeartOutline:hover {
-    color: #E8A87C;
-  }
-
-  .HeartOutline {
-    color: #465C78;
-  }
 
   .Fave {
     color: #465C78;
   }
 
-  .Fave:hover {
-    color: #E8A87C;
-  }
-  
-  .FaveOutline:hover {
-    color: #E8A87C;
-  }
-
-  .FaveOutline {
-    color: #465C78;
-  }

@@ -68,6 +68,8 @@ useMemo(() => {
 );
 }, [history]);
 
+console.log('USER: ', currentUser)
+
 return (
     <CurrentUserContext.Provider value={currentUser}>
     <SetCurrentUserContext.Provider value={setCurrentUser}>

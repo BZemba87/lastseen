@@ -4,7 +4,7 @@ import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { 
   useCurrentUser, 
-  useSetCurrentUser,} 
+  useSetCurrentUser} 
   from "../contexts/CurrentUserContexts";
 import Avatar from "./Avatar";
 import axios from "axios";
@@ -49,6 +49,7 @@ const NavBar = () => {
   <NavLink
         to="/fave"
         className={`${styles.NavLink} d-none d-lg-block`}
+        activeClassName={styles.Active}
       >
           <span>
             <i className="fa-solid fa-bookmark"></i> Fave Captions

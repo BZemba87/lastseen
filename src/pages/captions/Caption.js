@@ -91,7 +91,7 @@ const Caption = (props) => {
         }),
       }));
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
 
@@ -177,11 +177,11 @@ const Caption = (props) => {
             </OverlayTrigger>
           ) : fave_id ? (
             <span onClick={handleUnfaveCaptions}>
-              <i className={`fa-regular fa-bookmark ${styles.Fave}`} />
+              <i className={`fa-solid fa-bookmark ${styles.Fave}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleFaveCaptions}>
-              <i className={`fa-solid fa-bookmark ${styles.FaveOutline}`} />
+              <i className={`fa-regular fa-bookmark ${styles.FaveOutline}`} />
             </span>
           ) : (
             <OverlayTrigger

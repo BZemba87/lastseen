@@ -30,6 +30,7 @@ function CaptionsPage({ message, filter = "" }) {
         const { data } = await axiosReq.get(`/captions/?${filter}search=${query}`);
         setCaptions(data);
         setHasLoaded(true);
+        console.log(filter)
       } catch (err) {
         console.log(err);
       }

@@ -31,11 +31,11 @@ function App() {
               />
                  <Route
                   exact
-                  path={"/fave"}
+                  path="/fave"
                   render={() => (
                     <CaptionsPage
                       message="Nothing to see here! Fave a caption you want to see again!"
-                      filter={`fave_captions__owner__profile=${profile_id}&ordering=-fave_captions__created_on&`}
+                      filter={`fave__owner__profile=${profile_id}&ordering=-fave__created_on&`}
                     />
                   )}
                 />
