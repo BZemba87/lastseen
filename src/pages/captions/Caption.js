@@ -18,6 +18,7 @@ const Caption = (props) => {
     love_id,
     title,
     content,
+    location,
     image,
     created_at,
     captionPage,
@@ -140,6 +141,7 @@ const Caption = (props) => {
     <Card.Body>
       {title && <Card.Title className='text-center'>{title}</Card.Title>}
       {content && <Card.Text>{content}</Card.Text>}
+      {location && <div>{location}</div>}
       <div className={styles.CaptionBar}>
 
         {/* Love captions */}

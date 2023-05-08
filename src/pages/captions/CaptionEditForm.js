@@ -21,9 +21,10 @@ function CaptionEditForm() {
   const [CaptionData, setCaptionData] = useState({
     title: "",
     content: "",
+    location: "",
     image: "",
   });
-  const { title, content, image } = CaptionData;
+  const { title, content, location, image } = CaptionData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -33,9 +34,9 @@ function CaptionEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/captions/${id}/`);
-        const { title, content, image, is_owner } = data;
+        const { title, content, location, image, is_owner } = data;
 
-        is_owner ? setCaptionData({ title, content, image }) : history.push("/");
+        is_owner ? setCaptionData({ title, content, location, image }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -67,6 +68,7 @@ function CaptionEditForm() {
 
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("location", location);
 
      if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
@@ -107,6 +109,21 @@ function CaptionEditForm() {
           rows={6}
           name="content"
           value={content}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
           onChange={handleChange}
         />
       </Form.Group>

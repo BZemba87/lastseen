@@ -25,9 +25,10 @@ function CaptionCreateForm() {
   const [captionData, setCaptionData] = useState({
     title: "",
     content: "",
+    location: "",
     image: "",
   });
-  const { title, content, image } = captionData;
+  const { title, content, location, image } = captionData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -55,6 +56,7 @@ function CaptionCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("location", location);
     formData.append("image", imageInput.current.files[0]);
 
     try {
@@ -92,6 +94,21 @@ function CaptionCreateForm() {
           rows={6}
           name="content"
           value={content}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
           onChange={handleChange}
         />
       </Form.Group>
