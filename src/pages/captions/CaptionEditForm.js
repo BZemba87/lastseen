@@ -55,7 +55,7 @@ function CaptionEditForm() {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setCaptionData({
-        ...captionData,
+        ...CaptionData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -144,7 +144,7 @@ function CaptionEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="image-upload"
                     >
-                      Change the Pic
+                      Change Image
                     </Form.Label>
                   </div>
 
