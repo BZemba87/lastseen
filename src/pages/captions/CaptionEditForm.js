@@ -46,7 +46,7 @@ function CaptionEditForm() {
 
   const handleChange = (event) => {
     setCaptionData({
-      ...captionData,
+      ...CaptionData,
       [event.target.name]: event.target.value,
     });
   };
