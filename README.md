@@ -159,6 +159,8 @@ The admin of my api site can see all captions/comments/faves and loves in the ba
 
 <h2 align ="center"><img src = "public/ESLint.jpg"></h2>
 
+## Note:  Eslint started causing a number of compiling issues for me so tutor support suggested I uninstall it completely as it is already built into the react app and I didn't need the other version I had install.  I uninstalled the other version and my project was able to compile again with no issues.
+
 # Deployment
 - This React application is deployed to Heroku. Please follow the steps below:
 
