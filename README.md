@@ -30,6 +30,7 @@ I used the Agile Methodology Tool on Github to plan my project and use as a to d
 
 - As a user, I want the captions and comments to keep loading as I scroll through for a better user experience.
 
+## Another user story has been added to my issues/project for my new model - Fave.  The already existing issues have not been updated to reflect my post model changing to caption model.  
 <h2 align ="center"><img src = "public/user-stories.png"></h2>
 
 # Wireframes
@@ -148,6 +149,8 @@ A logged in user can love and fave any caption except their own and will receive
 ### As a user, I want the captions and comments to keep loading as I scroll through for a better user experience.
 - Infinite scroll exists and works on captions and comments.
 
+The admin of my api site can see all captions/comments/faves and loves in the backend.  Captions can also be added from the backend and appear at the frontend.
+
 # Resolved Bugs/Issues
 - The biggest issue I had was all captions and all comments were displaying under every profile and every caption.  I discovered this was because I had not added the data filtering function to my Comments and Captions views.py in my api.  
 
@@ -185,18 +188,19 @@ A logged in user can love and fave any caption except their own and will receive
 
 ## Reuse of React Components 
 
-- Code from the Post Create Form was reused for the Post Edit Form and Comment Edit Form.
+- Code from the Caption Create Form was reused for the Caption Edit Form and Comment Edit Form.
+- Asset: This component is used for spinners throughout the site and user messages are displayed if search results are not found.
 
 ## Future Features 
 - Users will be able to follow each other
-- Users will be able to update their profiles
+- Users will be able to update their profiles/profile pictures
 - Users will be able to view most popular profiles 
 
 # Technologies Used:
-- Pexels
-- FontAwesome
-- HTML
-- CSS
+- Pexels - used for images on the site
+- FontAwesome - used for icons 
+- CSS - used for styling 
+- HTML 
 - Javascript
 - Bootstrap
 - React 
@@ -223,6 +227,7 @@ A logged in user can love and fave any caption except their own and will receive
 # Credit
 - Code Institute Moments Walkthrough
 - Mentor
-- Tutoring
+- Tutoring Support 
 - Slack 
+- Stackoverflow
 
