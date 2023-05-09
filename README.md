@@ -204,6 +204,9 @@ The admin of my api site can see all captions/comments/faves and loves in the ba
 - Javascript
 - Bootstrap
 - React 
+- Heroku
+- Gitpod
+- Github
 
 # To connect the front end site to the back end on Heroku and Gitpod:
 - Add new config var to API on Heroku called CLIENT_ORIGIN with a value of the url for the deployed React project
